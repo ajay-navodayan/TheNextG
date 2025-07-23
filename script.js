@@ -27,10 +27,15 @@ window.addEventListener('scroll', function() {
 });
 
 // Smooth scrolling for navigation links
-function scrollToSection(sectionId) {
-    const element = document.getElementById(sectionId);
+function scrollToSection(sectionId, targetForm = false) {
+    const element = targetForm ? document.getElementById('contactForm') : document.getElementById(sectionId);
     if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Ensure focus on the form for accessibility
+        if (targetForm) {
+            const firstInput = element.querySelector('input');
+            if (firstInput) firstInput.focus();
+        }
     }
 }
 
@@ -77,7 +82,7 @@ document.querySelectorAll('.ripple-btn').forEach(button => {
 
 // Add functionality to hero buttons
 document.querySelector('.btn-primary').addEventListener('click', function() {
-    scrollToSection('contact');
+    scrollToSection('contact', true); // Target the form specifically
     console.log('Request a Call clicked');
 });
 
