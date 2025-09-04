@@ -186,7 +186,7 @@ if (contactForm) {
         );
 
         // Open user's email client
-        window.location.href = `mailto:company@example.com?subject=${subject}&body=${body}`;
+        window.location.href = `mailto:ajaynavodayan01@gmail.com?subject=${subject}&body=${body}`;
 
         // Button feedback
         const submitBtn = contactForm.querySelector('.submit-btn');
@@ -406,4 +406,5 @@ const debouncedScrollHandler = debounce(function() {
     // Handle scroll events here
 }, 10);
 window.addEventListener('scroll', debouncedScrollHandler);
+
 
