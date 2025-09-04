@@ -120,7 +120,7 @@ if (contactForm) {
 
     emailjsScript.onload = function() {
         // Initialize EmailJS with your public key
-        emailjs.init('NwLToZ0ICyiHScvI2'); // Replace with your actual EmailJS public key
+        emailjs.init('tOUXZvaZw5UB8D30K'); // Replace with your actual EmailJS public key
 
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -140,7 +140,7 @@ if (contactForm) {
             submitBtn.disabled = true;
             
             // Send email via EmailJS with correct parameter names matching your template
-            emailjs.send('service_y7yf0mk', 'template_ci6xrk5', {
+            emailjs.send('service_kl6jweh', 'template_29ouuek', {
                 // These parameter names MUST exactly match your EmailJS template variables
                 name: name,                // matches {{name}} in template
                 email: email,              // matches {{email}} in template
@@ -376,5 +376,6 @@ const debouncedScrollHandler = debounce(function() {
     // Handle scroll events here
 }, 10);
 window.addEventListener('scroll', debouncedScrollHandler);
+
 
 
