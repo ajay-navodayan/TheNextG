@@ -111,63 +111,99 @@ document.querySelectorAll('.fade-in').forEach(el => {
 });
 
 // Contact form handling with EmailJS
+// const contactForm = document.getElementById('contactForm');
+// if (contactForm) {
+//     // Load EmailJS SDK
+//     const emailjsScript = document.createElement('script');
+//     emailjsScript.src = 'https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js';
+//     document.head.appendChild(emailjsScript);
+
+//     emailjsScript.onload = function() {
+//         // Initialize EmailJS with your public key
+//         emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your EmailJS public key
+
+//         contactForm.addEventListener('submit', function(e) {
+//             e.preventDefault();
+            
+//             // Get form data
+//             const formData = new FormData(contactForm);
+//             const data = Object.fromEntries(formData);
+            
+//             // Simulate form submission UI
+//             const submitBtn = contactForm.querySelector('.submit-btn');
+//             const originalText = submitBtn.innerHTML;
+            
+//             submitBtn.innerHTML = '<span>Sending...</span>';
+//             submitBtn.disabled = true;
+            
+//             // Send email via EmailJS
+//             emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+//                 from_name: data.name,
+//                 from_email: data.email,
+//                 phone: data.phone,
+//                 service: data.service,
+//                 message: data.message
+//             })
+//             .then(function(response) {
+//                 submitBtn.innerHTML = '<span>Message Sent!</span>';
+//                 submitBtn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+                
+//                 setTimeout(() => {
+//                     submitBtn.innerHTML = originalText;
+//                     submitBtn.disabled = false;
+//                     submitBtn.style.background = 'linear-gradient(135deg, #00d4ff, #0ea5e9)';
+//                     contactForm.reset();
+//                 }, 2000);
+//             }, function(error) {
+//                 submitBtn.innerHTML = '<span>Error Sending!</span>';
+//                 submitBtn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+                
+//                 setTimeout(() => {
+//                     submitBtn.innerHTML = originalText;
+//                     submitBtn.disabled = false;
+//                     submitBtn.style.background = 'linear-gradient(135deg, #00d4ff, #0ea5e9)';
+//                 }, 2000);
+//                 console.error('EmailJS error:', error);
+//             });
+//         });
+//     };
+// }
+
 const contactForm = document.getElementById('contactForm');
+
 if (contactForm) {
-    // Load EmailJS SDK
-    const emailjsScript = document.createElement('script');
-    emailjsScript.src = 'https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js';
-    document.head.appendChild(emailjsScript);
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
 
-    emailjsScript.onload = function() {
-        // Initialize EmailJS with your public key
-        emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your EmailJS public key
+        // Get form data
+        const formData = new FormData(contactForm);
+        const data = Object.fromEntries(formData);
 
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData);
-            
-            // Simulate form submission UI
-            const submitBtn = contactForm.querySelector('.submit-btn');
+        // Build mailto link
+        const subject = encodeURIComponent("New Contact Form Submission");
+        const body = encodeURIComponent(
+            `Name: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\nService: ${data.service}\nMessage:\n${data.message}`
+        );
+
+        // Open user's email client
+        window.location.href = `mailto:company@example.com?subject=${subject}&body=${body}`;
+
+        // Button feedback
+        const submitBtn = contactForm.querySelector('.submit-btn');
+        if (submitBtn) {
             const originalText = submitBtn.innerHTML;
-            
-            submitBtn.innerHTML = '<span>Sending...</span>';
+            submitBtn.innerHTML = '<span>Opening email app...</span>';
             submitBtn.disabled = true;
-            
-            // Send email via EmailJS
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
-                from_name: data.name,
-                from_email: data.email,
-                phone: data.phone,
-                service: data.service,
-                message: data.message
-            })
-            .then(function(response) {
-                submitBtn.innerHTML = '<span>Message Sent!</span>';
-                submitBtn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
-                
-                setTimeout(() => {
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                    submitBtn.style.background = 'linear-gradient(135deg, #00d4ff, #0ea5e9)';
-                    contactForm.reset();
-                }, 2000);
-            }, function(error) {
-                submitBtn.innerHTML = '<span>Error Sending!</span>';
-                submitBtn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
-                
-                setTimeout(() => {
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                    submitBtn.style.background = 'linear-gradient(135deg, #00d4ff, #0ea5e9)';
-                }, 2000);
-                console.error('EmailJS error:', error);
-            });
-        });
-    };
+
+            setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                contactForm.reset();
+            }, 2000);
+        }
+    });
 }
+
 
 // Animated counter for stats
 function animateCounter(element, target, duration = 2000) {
@@ -370,3 +406,4 @@ const debouncedScrollHandler = debounce(function() {
     // Handle scroll events here
 }, 10);
 window.addEventListener('scroll', debouncedScrollHandler);
+
