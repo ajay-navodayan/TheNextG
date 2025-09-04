@@ -455,7 +455,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="contact-form-wrapper">
+<!--                 <div class="contact-form-wrapper">
                     <form class="contact-form" id="contactForm">
                         <div class="form-group">
                             <input type="text" id="name" name="name" placeholder="Full Name" required>
@@ -488,7 +488,42 @@
                             </svg>
                         </button>
                     </form>
-                </div>
+                </div> -->
+                <div class="contact-form-wrapper">
+    <form class="contact-form" id="contactForm" name="contact">
+        <div class="form-group">
+            <input type="text" id="name" name="name" placeholder="Full Name" required>
+        </div>
+        <div class="form-group">
+            <input type="email" id="email" name="email" placeholder="Email Address" required>
+        </div>
+        <div class="form-group">
+            <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+        </div>
+        <div class="form-group">
+            <select id="service" name="service" required>
+                <option value="">Select Service Required</option>
+                <option value="device-repair">Device Repair</option>
+                <option value="laptop-rental">Laptop Rental</option>
+                <option value="refurbished-laptops">Refurbished Laptops</option>
+                <option value="amc-services">AMC Services</option>
+                <option value="corporate-gifting">Corporate Gifting</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn ripple-btn">
+            <span>Send Message</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </button>
+    </form>
+</div>
+
+                
             </div>
         </div>
     </section>
@@ -565,4 +600,5 @@
 </body>
 
 </html>
+
 
