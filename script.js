@@ -120,7 +120,7 @@ if (contactForm) {
 
     emailjsScript.onload = function() {
         // Initialize EmailJS with your public key
-        emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your EmailJS public key
+        emailjs.init('tOUXZvaZw5UB8D30K'); // Replace with your EmailJS public key
 
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -137,7 +137,7 @@ if (contactForm) {
             submitBtn.disabled = true;
             
             // Send email via EmailJS
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+            emailjs.send('service_kl6jweh', 'template_29ouuek', {
                 from_name: data.name,
                 from_email: data.email,
                 phone: data.phone,
@@ -370,3 +370,4 @@ const debouncedScrollHandler = debounce(function() {
     // Handle scroll events here
 }, 10);
 window.addEventListener('scroll', debouncedScrollHandler);
+
