@@ -120,14 +120,17 @@ if (contactForm) {
 
     emailjsScript.onload = function() {
         // Initialize EmailJS with your public key
-        emailjs.init('tOUXZvaZw5UB8D30K'); // Replace with your EmailJS public key
+        emailjs.init('NwLToZ0ICyiHScvI2'); // Replace with your actual EmailJS public key
 
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form data
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData);
+            // Get form values directly from form elements
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
             
             // Simulate form submission UI
             const submitBtn = contactForm.querySelector('.submit-btn');
@@ -136,15 +139,17 @@ if (contactForm) {
             submitBtn.innerHTML = '<span>Sending...</span>';
             submitBtn.disabled = true;
             
-            // Send email via EmailJS
-            emailjs.send('service_kl6jweh', 'template_29ouuek', {
-                from_name: data.name,
-                from_email: data.email,
-                phone: data.phone,
-                service: data.service,
-                message: data.message
+            // Send email via EmailJS with correct parameter names matching your template
+            emailjs.send('service_y7yf0mk', 'template_ci6xrk5', {
+                // These parameter names MUST exactly match your EmailJS template variables
+                name: name,                // matches {{name}} in template
+                email: email,              // matches {{email}} in template
+                phone: phone,              // matches {{phone}} in template
+                service: service,          // matches {{service}} in template
+                message: message           // matches {{message}} in template
             })
             .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
                 submitBtn.innerHTML = '<span>Message Sent!</span>';
                 submitBtn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
                 
@@ -154,7 +159,9 @@ if (contactForm) {
                     submitBtn.style.background = 'linear-gradient(135deg, #00d4ff, #0ea5e9)';
                     contactForm.reset();
                 }, 2000);
-            }, function(error) {
+            })
+            .catch(function(error) {
+                console.error('FAILED...', error);
                 submitBtn.innerHTML = '<span>Error Sending!</span>';
                 submitBtn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
                 
@@ -163,7 +170,6 @@ if (contactForm) {
                     submitBtn.disabled = false;
                     submitBtn.style.background = 'linear-gradient(135deg, #00d4ff, #0ea5e9)';
                 }, 2000);
-                console.error('EmailJS error:', error);
             });
         });
     };
@@ -370,4 +376,5 @@ const debouncedScrollHandler = debounce(function() {
     // Handle scroll events here
 }, 10);
 window.addEventListener('scroll', debouncedScrollHandler);
+
 
