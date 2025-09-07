@@ -584,9 +584,19 @@ body {
 /* About Section */
 .about {
     padding: 6rem 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    position: relative;
 }
 
+.about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
+}
 .about-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1089,4 +1099,215 @@ body {
     .service-card {
         min-width: unset;
     }
+
 }
+/* Customers Section */
+.customers {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    position: relative;
+}
+
+.customers::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
+}
+
+.customers-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.customers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.customer-logo {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.customer-logo.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.logo-container {
+    position: relative;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.logo-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0, 212, 255, 0.3);
+    border-color: rgba(0, 212, 255, 0.5);
+    background: rgba(15, 23, 42, 0.9);
+}
+
+.logo-container:hover .logo-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.logo-container:hover .customer-logo-img,
+.logo-container:hover .text-logo {
+    transform: scale(0.8);
+    opacity: 0.3;
+}
+
+.customer-logo-img {
+    max-width: 180px;
+    max-height: 180px;
+    object-fit: contain;
+    filter: brightness(1.2) contrast(1.1);
+    transition: all 0.3s ease;
+}
+
+.text-logo {
+    color: #00d4ff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.logo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 212, 255, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    border-radius: 20px;
+}
+
+.logo-overlay h4 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.logo-overlay p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+.customers-testimonial {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 20px;
+    padding: 3rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.testimonial-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.quote-icon {
+    color: #00d4ff;
+    margin-bottom: 2rem;
+}
+
+.testimonial-text {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #e2e8f0;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.testimonial-attribution {
+    color: #00d4ff;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* Mobile Responsive for Customers Section */
+@media (max-width: 768px) {
+    .customers {
+        padding: 4rem 0;
+    }
+    
+    .customers-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .logo-container {
+        height: 160px;
+        padding: 1.5rem;
+    }
+    
+    .customer-logo-img {
+        max-width: 100px;
+        max-height: 60px;
+    }
+    
+    .text-logo {
+        font-size: 1rem;
+    }
+    
+    .customers-testimonial {
+        padding: 2rem;
+    }
+    
+    .testimonial-text {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .customers-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .logo-container {
+        height: 140px;
+        padding: 1rem;
+    }
+    
+    .customer-logo-img {
+        max-width: 80px;
+        max-height: 50px;
+    }
+    
+    .text-logo {
+        font-size: 0.9rem;
+    }
+}
+
