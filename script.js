@@ -91,6 +91,15 @@ document.querySelector('.btn-secondary').addEventListener('click', function() {
     console.log('Explore Our Services clicked');
 });
 
+// Add navigation functionality for customers section
+const customerNavLinks = document.querySelectorAll('a[href="#customers"]');
+customerNavLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        scrollToSection('customers');
+    });
+});
+
 // Fade in animation on scroll
 const observerOptions = {
     threshold: 0.1,
@@ -256,6 +265,23 @@ serviceCards.forEach((card, index) => {
     cardObserver.observe(card);
 });
 
+
+// Add intersection observer for customer logos
+const customerLogos = document.querySelectorAll('.customer-logo');
+customerLogos.forEach((logo, index) => {
+    const logoObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, index * 150);
+            }
+        });
+    }, { threshold: 0.2 });
+    
+    logoObserver.observe(logo);
+});
+
 // Add smooth reveal animation for about section
 const aboutSection = document.getElementById('about');
 if (aboutSection) {
@@ -376,6 +402,7 @@ const debouncedScrollHandler = debounce(function() {
     // Handle scroll events here
 }, 10);
 window.addEventListener('scroll', debouncedScrollHandler);
+
 
 
 
