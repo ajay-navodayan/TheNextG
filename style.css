@@ -1264,22 +1264,22 @@ body {
     }
     
     .customers-grid {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 1.5rem;
     }
     
     .logo-container {
-        height: 160px;
+        height: 180px;
         padding: 1.5rem;
     }
     
     .customer-logo-img {
-        max-width: 100px;
-        max-height: 60px;
+        max-width: 150px;
+        max-height: 120px;
     }
     
     .text-logo {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
     
     .customers-testimonial {
@@ -1293,23 +1293,24 @@ body {
 
 @media (max-width: 480px) {
     .customers-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
     }
     
     .logo-container {
-        height: 140px;
-        padding: 1rem;
+        height: 160px;
+        padding: 1.5rem;
     }
     
     .customer-logo-img {
-        max-width: 80px;
-        max-height: 50px;
+        max-width: 140px;
+        max-height: 100px;
     }
-    
     .text-logo {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
 }
+
 
 
 
