@@ -298,8 +298,8 @@ body {
         bottom: -20px;
     }
 
-    .hero-logos-img {
-    margin-left: 55%;}
+/*     .hero-logos-img {
+    margin-left: 55%;} */
 /*     .hero-logos-img {
     margin-left: 55%;
     width: 200px;
@@ -1376,6 +1376,7 @@ body {
         font-size: 1rem;
     }
 }
+
 
 
 
