@@ -297,7 +297,7 @@ body {
         height: 48px;
         bottom: -20px;
     }
-    .hero-logos-img {
+/*     .hero-logos-img {
     margin-left: 55%;
     width: 200px;
     height: 70px;
@@ -306,7 +306,7 @@ body {
     box-shadow: 0 8px 32px rgba(0,0,0,0.12);
     border-radius: 18px;
     /* background: #fff; */
-    object-fit: contain;
+/*     object-fit: contain; */ */
 }
 
 
