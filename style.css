@@ -247,6 +247,59 @@ body {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
+
+
+/* 3-Logo Hero Image Styling */
+.hero-logos-wrapper {
+    position: absolute;
+
+    
+    left: 0;
+    bottom: -48px; /* Half out of the box, adjust as needed */
+    z-index: 5;
+    width: 220px;
+    height: 96px;
+    display: flex;
+    align-items: flex-end;
+    pointer-events: none;
+}
+.hero-logos-img {
+    margin-left: 100%;
+    width: 800px;
+    height: 90px;
+    display: block;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    border-radius: 18px;
+    /* background: #fff; */
+    object-fit: contain;
+}
+@media (max-width: 768px) {
+    .hero-logos-wrapper {
+        width: 150px;
+        height: 64px;
+        bottom: -32px;
+    }
+    .hero-logos-img {
+    margin-left: 85%;
+    width: 200px;
+    height: 70px;
+    display: block;
+    padding-top: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    border-radius: 18px;
+    /* background: #fff; */
+    object-fit: contain;
+}
+}
+@media (max-width: 480px) {
+    .hero-logos-wrapper {
+        width: 110px;
+        height: 48px;
+        bottom: -20px;
+    }
+}
+
+
 .hero-title {
     font-size: clamp(2.3rem, 4.5vw, 3.8rem);
     font-weight: 800;
@@ -1310,6 +1363,7 @@ body {
         font-size: 1rem;
     }
 }
+
 
 
 
